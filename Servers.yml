@@ -135,3 +135,10 @@ Resources:
       VpcId: 
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
+
+Output: 
+  ELBDNSName:
+      Description: The DNS name of our elastic load balancer
+      Value: !Join ['http://', !GetAtt WebServerLB.DNSName] 
+      Export:
+        Name: !Sub ${EnvironmentName}-ELBDNSName
